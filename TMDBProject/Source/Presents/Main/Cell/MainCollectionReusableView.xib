@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="20037" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="20020"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <collectionReusableView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="MainCollectionReusableView" id="U6b-Vx-4bR" customClass="MainCollectionReusableView" customModule="TMDBProject" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="132"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <subviews>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1hj-0r-vi2">
+                    <rect key="frame" x="20" y="54" width="42" height="21"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                    <nil key="textColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TQA-2O-sjd">
+                    <rect key="frame" x="20" y="80" width="42" height="21"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                    <nil key="textColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+            </subviews>
+            <viewLayoutGuide key="safeArea" id="VXr-Tz-HHm"/>
+            <constraints>
+                <constraint firstItem="TQA-2O-sjd" firstAttribute="leading" secondItem="1hj-0r-vi2" secondAttribute="leading" id="Ue4-FU-AlV"/>
+                <constraint firstItem="1hj-0r-vi2" firstAttribute="top" secondItem="VXr-Tz-HHm" secondAttribute="top" constant="10" id="YHG-cL-Nff"/>
+                <constraint firstItem="TQA-2O-sjd" firstAttribute="top" secondItem="1hj-0r-vi2" secondAttribute="bottom" constant="5" id="cAK-9e-ufw"/>
+                <constraint firstItem="1hj-0r-vi2" firstAttribute="leading" secondItem="VXr-Tz-HHm" secondAttribute="leading" constant="20" id="dBV-hr-zmc"/>
+            </constraints>
+            <connections>
+                <outlet property="dateLabel" destination="1hj-0r-vi2" id="3Ez-zt-FFl"/>
+                <outlet property="genreLabel" destination="TQA-2O-sjd" id="CUc-I4-pnn"/>
+            </connections>
+            <point key="canvasLocation" x="137.68115942028987" y="97.098214285714278"/>
+        </collectionReusableView>
+    </objects>
+</document>
