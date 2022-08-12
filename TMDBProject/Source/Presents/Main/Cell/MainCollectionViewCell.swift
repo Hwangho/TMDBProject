@@ -9,7 +9,7 @@ import UIKit
 
 import Kingfisher
 
-class MainCollectionViewCell: UICollectionViewCell {
+class MainCollectionViewCell: BaseCollectionViewCell {
 
     static let identifier = "MainCollectionViewCell"
     
@@ -36,7 +36,7 @@ class MainCollectionViewCell: UICollectionViewCell {
     
     
     override func awakeFromNib() {
-        super.awakeFromNib()
+//        super.awakeFromNib()
         setDesign()
     }
     
@@ -94,8 +94,8 @@ class MainCollectionViewCell: UICollectionViewCell {
         
         layer.masksToBounds = false
         layer.shadowRadius = 5.0
-        layer.shadowOpacity = 0.4
-        layer.shadowColor = UIColor.black.cgColor
+        layer.shadowOpacity = 0.7
+        layer.shadowColor = Color.BaseColor.shadowColor.cgColor
         layer.shadowOffset = CGSize(width: 3, height: 3)
     }
 }

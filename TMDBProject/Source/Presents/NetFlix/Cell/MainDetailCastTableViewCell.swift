@@ -9,7 +9,7 @@ import UIKit
 
 import Kingfisher
 
-class MainDetailCastTableViewCell: UITableViewCell {
+class MainDetailCastTableViewCell: BaseTableViewCell {
 
     @IBOutlet weak var titleImage: UIImageView!
     
@@ -25,6 +25,7 @@ class MainDetailCastTableViewCell: UITableViewCell {
     
     
     func setData(credit: CreditsModel) {
+        
         realNameLabel.text = credit.realName
         castingNameLabel.text = credit.castingName
         let url = URL(string: credit.profileImage)
@@ -35,9 +36,11 @@ class MainDetailCastTableViewCell: UITableViewCell {
         titleImage.layer.cornerRadius = 10
         
         realNameLabel.text = "HwangHo Song"
+        realNameLabel.textColor = Color.BaseColor.FontColor
         realNameLabel.font = UIFont.boldSystemFont(ofSize: 18)
         
         castingNameLabel.text = "JungJea Lee / 28"
+        castingNameLabel.textColor = Color.BaseColor.FontColor
         castingNameLabel.font = UIFont.systemFont(ofSize: 14)
     }
 }

@@ -8,6 +8,7 @@
 import UIKit
 
 import Kingfisher
+import SnapKit
 
 
 enum MovieDetailType: CaseIterable {
@@ -19,7 +20,7 @@ enum MovieDetailType: CaseIterable {
 }
 
 
-class NetFlixViewController: UIViewController {
+class NetFlixViewController: BaseViewController {
     
     /// IBOutlet
     @IBOutlet weak var tableView: UITableView!
@@ -62,6 +63,7 @@ class NetFlixViewController: UIViewController {
         tableView.delegate = self
         tableView.separatorStyle = .none
         
+        
         tableView.register(UINib(nibName: MainDetailPosterTableViewCell.reuseIdentifier, bundle: nil), forCellReuseIdentifier: MainDetailPosterTableViewCell.reuseIdentifier)
         tableView.register(UINib(nibName: MainDetailOverViewTableViewCell.reuseIdentifier, bundle: nil), forCellReuseIdentifier: MainDetailOverViewTableViewCell.reuseIdentifier)
         tableView.register(UINib(nibName: MainDetailCastTableViewCell.reuseIdentifier, bundle: nil), forCellReuseIdentifier: MainDetailCastTableViewCell.reuseIdentifier)
@@ -96,25 +98,22 @@ extension NetFlixViewController: UITableViewDataSource, UITableViewDelegate {
         case .poster:
             guard let posterCell = tableView.dequeueReusableCell(withIdentifier: MainDetailPosterTableViewCell.reuseIdentifier, for: indexPath) as? MainDetailPosterTableViewCell else { return UITableViewCell() }
             
-            posterCell.movieTitleLabel.text = movieTitle
+            posterCell.setData(title: movieTitle ?? "", backImage: backgroundPosterImage, posterImage: posterImage)
             
-            let backurl = URL(string: backgroundPosterImage!)
-            posterCell.backgroundImage.kf.setImage(with: backurl)
-            
-            let posterurl = URL(string: posterImage!)
-            posterCell.poseterImage.kf.setImage(with: posterurl)
             return posterCell
             
         case .overview:
             guard let overViewCell = tableView.dequeueReusableCell(withIdentifier: MainDetailOverViewTableViewCell.reuseIdentifier, for: indexPath) as? MainDetailOverViewTableViewCell else { return UITableViewCell() }
             
             overViewCell.setData(content: overView!)
+            
             return overViewCell
             
         case .cast:
             guard let castCell = tableView.dequeueReusableCell(withIdentifier: MainDetailCastTableViewCell.reuseIdentifier, for: indexPath) as? MainDetailCastTableViewCell else { return UITableViewCell() }
             
             castCell.setData(credit: creditList[indexPath.item])
+            
             return castCell
             
         case .recomand:
@@ -127,7 +126,6 @@ extension NetFlixViewController: UITableViewDataSource, UITableViewDelegate {
             netflixCell.collectionView.showsHorizontalScrollIndicator = false
             netflixCell.collectionView.tag = 0
             netflixCell.collectionView.register(UINib(nibName: NetFlixCollectionViewCell.reuseIdentifier, bundle: nil), forCellWithReuseIdentifier: NetFlixCollectionViewCell.reuseIdentifier)
-            
             
             return netflixCell
             
@@ -165,26 +163,44 @@ extension NetFlixViewController: UITableViewDataSource, UITableViewDelegate {
         }
     }
     
-    // tableView header
-    func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        let view = UIView(frame: CGRect(x: 0, y: 0, width: tableView.frame.size.width, height: 30))
+        let label = UILabel(frame: CGRect(x: 0, y: 0, width: tableView.frame.size.width, height: 18))
+        label.font = UIFont.boldSystemFont(ofSize: 18)
+        label.textColor = Color.BaseColor.FontColor
+        view.backgroundColor = Color.BaseColor.backgroundColor
+        view.addSubview(label)
+        label.snp.makeConstraints {
+            $0.top.bottom.equalTo(5)
+            $0.leading.equalTo(13)
+        }
+        
         let setting = MovieDetailType.allCases[section]
         
         switch setting {
         case .overview:
-            return "OverView"
+            label.text = "OverView"
+            return view
             
         case .cast:
-            return "Cast"
+            label.text = "Cast"
+            return view
 
         case .recomand:
-            return  recomadData.isEmpty ? "" : recomadData[0].title
+            label.text = recomadData.isEmpty ? "" : recomadData[0].title
+            return view
             
         case .similar:
-            return  recomadData.isEmpty ? "" : recomadData[1].title
+            label.text = recomadData.isEmpty ? "" : recomadData[1].title
+            return view
             
         default:
             return nil
         }
+    }
+    
+    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        return 35
     }
     
 }
@@ -213,6 +229,5 @@ extension NetFlixViewController: UICollectionViewDataSource, UICollectionViewDel
         layout.sectionInset = UIEdgeInsets(top: 0, left: 13, bottom: 0, right: 0)
         return layout
     }
-    
-    
+
 }

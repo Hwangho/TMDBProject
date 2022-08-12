@@ -6,3 +6,16 @@
 //
 
 import Foundation
+import UIKit
+
+
+struct Color {
+    
+    struct BaseColor {
+        static let backgroundColor: UIColor = .white
+        
+        static let FontColor: UIColor = .black
+        
+        static let shadowColor: UIColor = .black
+    }
+}

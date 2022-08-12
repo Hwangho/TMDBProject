@@ -14,7 +14,7 @@ import SwiftyJSON
 typealias genreType = [Int: String]
 
 
-class MainViewController: UIViewController {
+class MainViewController: BaseViewController {
     
     /// Outlet
     @IBOutlet weak var collectionView: UICollectionView!
@@ -41,11 +41,9 @@ class MainViewController: UIViewController {
         collectionView.delegate = self
         
         collectionView.register(UINib(nibName: MainCollectionViewCell.identifier, bundle: nibBundle), forCellWithReuseIdentifier: MainCollectionViewCell.identifier)
-        
         collectionView.register(UINib(nibName: MainCollectionReusableView.identifier, bundle: nibBundle), forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: MainCollectionReusableView.identifier)
         
         requestGenreData()
-        
     }
     
     
@@ -65,8 +63,7 @@ class MainViewController: UIViewController {
             self?.collectionView.reloadData()
         }
     }
-    
-    
+       
 }
 
 
@@ -92,7 +89,6 @@ extension MainViewController: UICollectionViewDataSource, UICollectionViewDelega
     }
     
     func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
-        
         switch kind {
         case UICollectionView.elementKindSectionHeader:
             guard let header = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: MainCollectionReusableView.identifier, for: indexPath) as? MainCollectionReusableView else { return UICollectionReusableView() }

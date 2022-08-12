@@ -23,7 +23,6 @@ struct TMDBService: TMDBServiceProtocol {
     /// Variable
     let repository: TMDBRpeositoryProtocol = TMDBRpeository()
     
-
     /// Custom Func
     func fetchAllGenres(complitionHandler: @escaping(genreType) -> ()) {
         var genres: genreType = [:]

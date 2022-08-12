@@ -7,7 +7,7 @@
 
 import UIKit
 
-class NetflixTableViewCell: UITableViewCell {
+class NetflixTableViewCell: BaseTableViewCell {
 
     @IBOutlet weak var collectionView: UICollectionView!
     

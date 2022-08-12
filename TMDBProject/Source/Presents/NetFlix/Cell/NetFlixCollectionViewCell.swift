@@ -7,7 +7,7 @@
 
 import UIKit
 
-class NetFlixCollectionViewCell: UICollectionViewCell {
+class NetFlixCollectionViewCell: BaseCollectionViewCell {
     
     @IBOutlet weak var posterImage: UIImageView!
     

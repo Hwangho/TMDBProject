@@ -7,7 +7,7 @@
 
 import UIKit
 
-class MainDetailOverViewTableViewCell: UITableViewCell {
+class MainDetailOverViewTableViewCell: BaseTableViewCell {
 
     @IBOutlet weak var overLabel: UILabel!
     
@@ -18,10 +18,12 @@ class MainDetailOverViewTableViewCell: UITableViewCell {
 
     func setData(content: String) {
         overLabel.text = content
+        overLabel.textColor = Color.BaseColor.FontColor
     }
 
     func setDesign() {
         overLabel.textAlignment = .center
+        overLabel.textColor = Color.BaseColor.FontColor
     }
     
 }
